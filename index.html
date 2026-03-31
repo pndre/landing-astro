@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Pedro André | Desenvolvedor Full Stack de alto desempenho – sites que convertem, impressionam e entregam resultados reais.">
+  <meta name="description" content="Pedro André | Dev & Tec">
   <meta name="theme-color" content="#080808">
   <meta property="og:title" content="Pedro André | Dev & Tec">
   <meta property="og:description" content="Performance extrema e design sob medida para destacar sua marca no digital.">
@@ -16,9 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
 
   <style>
-    /* =====================================================
-       CSS VARIABLES – DESIGN SYSTEM
-    ===================================================== */
+    /* --- Variáveis --- */
     :root {
       --bg:        #080808;
       --bg-2:      #0e0e0e;
@@ -36,9 +34,7 @@
       --ease:      cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* =====================================================
-       RESET & BASE
-    ===================================================== */
+    /* --- Reset e Base --- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
@@ -53,7 +49,6 @@
       line-height: 1.6;
       min-height: 100dvh;
       overflow-x: hidden;
-      /* DOT MATRIX BACKGROUND */
       background-image:
         radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
       background-size: 28px 28px;
@@ -64,14 +59,10 @@
     ul { list-style: none; }
     button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-    /* =====================================================
-       TYPOGRAPHY
-    ===================================================== */
+    /* --- Tipografia ---*/
     h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.1; letter-spacing: -0.02em; }
 
-    /* =====================================================
-       LAYOUT HELPERS
-    ===================================================== */
+    /* --- Layout Helpers --- */
     .container {
       width: min(100%, 1200px);
       margin-inline: auto;
@@ -92,9 +83,7 @@
       margin-bottom: 2rem;
     }
 
-    /* =====================================================
-       ANIMATIONS
-    ===================================================== */
+    /* --- Animações --- */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(32px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -115,9 +104,7 @@
     .fade-up:nth-child(2) { animation-delay: .12s; }
     .fade-up:nth-child(3) { animation-delay: .24s; }
 
-    /* =====================================================
-       HEADER
-    ===================================================== */
+    /* --- Cabeçalho --- */
     .header {
       position: sticky;
       top: 0;
@@ -151,7 +138,7 @@
       text-transform: uppercase;
     }
 
-    /* NAV */
+    /* --- Nav --- */
     .nav-links {
       display: flex;
       gap: .25rem;
@@ -176,7 +163,7 @@
     }
     .nav-links a i { font-size: .7rem; }
 
-    /* HAMBURGER */
+    /* Ícone Menu */
     .menu-toggle { display: none; }
     .menu-icon {
       display: none;
@@ -201,35 +188,40 @@
     .menu-icon .fa-bars { color: var(--text); font-size: 1rem; }
 
     @media (max-width: 768px) {
-      .menu-icon { display: flex; }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        inset: 64px 0 0 0;
-        background: rgba(8,8,8,0.97);
-        backdrop-filter: blur(24px);
-        padding: 2rem;
-        gap: .5rem;
-        z-index: 99;
-        align-items: flex-start;
-        border-top: 1px solid var(--border);
-      }
-      .nav-links a {
-        font-size: .9rem;
-        padding: .9rem 1rem;
-        width: 100%;
-        border-color: var(--border);
-        min-height: 48px;
-      }
-      .menu-toggle:checked ~ .nav-links { display: flex; }
-      .menu-toggle:checked ~ .menu-icon .fa-bars { display: none; }
-      .menu-toggle:checked ~ .menu-icon .fa-times { display: block; color: var(--accent); }
-    }
-
-    /* =====================================================
-       HERO
-    ===================================================== */
+    .nav-links {
+    display: none; 
+    flex-direction: column;
+    position: fixed;
+    top: 64px; /* Altura do seu header */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(100vh - 64px);
+    background-color: #080808 !important; 
+    z-index: 999;
+    padding: 2rem;
+    gap: 1rem;
+    align-items: flex-start;
+    border-top: 1px solid var(--border);
+    overflow-y: auto;
+  }
+  .menu-toggle:checked ~ .nav-links {
+    display: flex !important;
+  }
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    background: transparent;
+  }
+  .menu-icon {
+    display: flex;
+    z-index: 1001;
+  }
+}
+    /* --- Hero --- */
     .hero {
       padding: clamp(5rem, 14vw, 10rem) 0 clamp(4rem, 10vw, 7rem);
       position: relative;
@@ -353,7 +345,6 @@
     }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* Decorative corner lines on hero */
     .hero-corner {
       position: absolute;
       width: 64px; height: 64px;
@@ -364,9 +355,7 @@
     .hero-corner--tl { top: 2rem; left: clamp(1.25rem, 5vw, 3rem); border-width: 1px 0 0 1px; }
     .hero-corner--br { bottom: 2rem; right: clamp(1.25rem, 5vw, 3rem); border-width: 0 1px 1px 0; }
 
-    /* =====================================================
-       ABOUT / ABOUT-GRID
-    ===================================================== */
+    /* --- Sobre --- */
     .about-section {
       padding: clamp(4rem, 8vw, 7rem) 0;
       border-top: 1px solid var(--border);
@@ -456,9 +445,7 @@
       .about-grid { grid-template-columns: 1fr; }
     }
 
-    /* =====================================================
-       CAROUSEL / EXEMPLOS
-    ===================================================== */
+    /* --- Carrosel de exemplos --- */
     .carousel-section {
       padding: clamp(4rem, 8vw, 7rem) 0;
       border-top: 1px solid var(--border);
@@ -580,9 +567,7 @@
       color: #000;
     }
 
-    /* =====================================================
-       PRICING
-    ===================================================== */
+    /* --- Preços --- */
     .pricing {
       padding: clamp(4rem, 8vw, 7rem) 0;
       border-top: 1px solid var(--border);
@@ -669,9 +654,7 @@
       flex-shrink: 0;
     }
 
-    /* =====================================================
-       TESTIMONIALS / TRUST
-    ===================================================== */
+    /* --- Confiança --- */
     .trust-section {
       padding: clamp(4rem, 8vw, 7rem) 0;
       border-top: 1px solid var(--border);
@@ -717,9 +700,7 @@
       font-weight: 300;
     }
 
-    /* =====================================================
-       CONTACT CTA
-    ===================================================== */
+    /* --- Contato --- */
     .contact-section {
       padding: clamp(5rem, 10vw, 9rem) 0;
       border-top: 1px solid var(--border);
@@ -804,9 +785,7 @@
     }
     .guarantee-tag i { color: var(--accent); }
 
-    /* =====================================================
-       FOOTER
-    ===================================================== */
+    /* --- Rodapé --- */
     footer {
       border-top: 1px solid var(--border);
       padding: clamp(2.5rem, 5vw, 4rem) 0;
@@ -878,50 +857,39 @@
       .hero-vertical-label { display: none; }
     }
 
-    /* =====================================================
-       SCROLLBAR
-    ===================================================== */
+    /* --- Scrollbar --- */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border-hi); }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-    /* =====================================================
-       SELECTION
-    ===================================================== */
+    /* --- Seleção --- */
     ::selection { background: var(--accent); color: #000; }
   </style>
 </head>
 <body>
-
-<!-- HEADER -->
+<!-- Cabeçalho -->
 <header class="header">
   <div class="container header-inner">
     <div class="logo">
       <h1>Pedro André</h1>
       <p>Dev &amp; Tec. · Criação solo de alto desempenho</p>
     </div>
-
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">
     <label for="menu-toggle" class="menu-icon" aria-label="Menu de navegação">
       <i class="fas fa-bars" aria-hidden="true"></i>
       <i class="fas fa-times" aria-hidden="true"></i>
     </label>
-
-    <nav aria-label="Navegação principal">
-      <ul class="nav-links">
-        <li><a href="#inicio"><i class="fas fa-home" aria-hidden="true"></i> Início</a></li>
-        <li><a href="#exemplos"><i class="fas fa-layer-group" aria-hidden="true"></i> Portfólio</a></li>
-        <li><a href="#planos"><i class="fas fa-chart-line" aria-hidden="true"></i> Investimento</a></li>
-        <li><a href="#contato"><i class="fab fa-whatsapp" aria-hidden="true"></i> Contato</a></li>
-      </ul>
-    </nav>
+    <ul class="nav-links" role="navigation" aria-label="Navegação principal">
+      <li><a href="#inicio"><i class="fas fa-home" aria-hidden="true"></i> Início</a></li>
+      <li><a href="#exemplos"><i class="fas fa-layer-group" aria-hidden="true"></i> Portfólio</a></li>
+      <li><a href="#planos"><i class="fas fa-chart-line" aria-hidden="true"></i> Investimento</a></li>
+      <li><a href="#contato"><i class="fab fa-whatsapp" aria-hidden="true"></i> Contato</a></li>
+    </ul>
   </div>
 </header>
-
 <main>
-
-  <!-- HERO -->
+  <!-- Hero -->
   <section id="inicio" class="hero" aria-labelledby="hero-heading">
     <div class="container">
       <div class="hero-grid">
@@ -952,8 +920,7 @@
     <div class="hero-corner hero-corner--tl" aria-hidden="true"></div>
     <div class="hero-corner hero-corner--br" aria-hidden="true"></div>
   </section>
-
-  <!-- ABOUT -->
+  <!-- Sobre -->
   <section class="about-section" aria-labelledby="about-heading">
     <div class="container about-grid">
       <div class="about-text fade-up">
@@ -962,7 +929,6 @@
         <p>Desenvolvedor Full Stack com foco cirúrgico em criar experiências digitais que funcionam — e vendem. Simplifico a tecnologia para o seu negócio: sem intermediários, sem termos complicados. Conversa direta e código de altíssima qualidade.</p>
         <p class="signature"><i class="fas fa-code" aria-hidden="true"></i> "Código limpo, design humano e resultados mensuráveis."</p>
       </div>
-
       <div class="differentials" role="list">
         <article class="diff-card fade-up" role="listitem">
           <div class="diff-icon" aria-hidden="true"><i class="fas fa-rocket"></i></div>
@@ -988,8 +954,7 @@
       </div>
     </div>
   </section>
-
-  <!-- PORTFOLIO CAROUSEL -->
+  <!-- Carrossel de Exemplos -->
   <section id="exemplos" class="carousel-section" aria-labelledby="portfolio-heading">
     <div class="container">
       <div class="section-header">
@@ -1006,21 +971,17 @@
           </button>
         </div>
       </div>
-
       <div class="carousel-wrapper">
         <div class="carousel-track" id="carouselTrack" role="list"></div>
       </div>
     </div>
   </section>
-
-  <!-- PRICING -->
+  <!-- Preços -->
   <section id="planos" class="pricing" aria-labelledby="pricing-heading">
     <div class="container">
       <span class="section-label"><i class="fas fa-percent" aria-hidden="true"></i> Investimento</span>
       <h2 id="pricing-heading" style="font-size: clamp(1.75rem, 4vw, 2.8rem); margin-bottom: 2.5rem;">Invista com<br>inteligência estratégica.</h2>
-
       <div class="pricing-grid" role="list">
-
         <article class="plan-card" role="listitem">
           <div class="plan-name">Front-end</div>
           <div class="plan-price">R$ 1.290 <small>à vista</small></div>
@@ -1032,7 +993,6 @@
             <li><i class="fas fa-check-circle" aria-hidden="true"></i> Entrega em 7 dias</li>
           </ul>
         </article>
-
         <article class="plan-card popular" role="listitem" aria-label="Plano mais escolhido">
           <div class="badge"><i class="fas fa-bolt" aria-hidden="true"></i> Mais Escolhido</div>
           <div class="plan-name">Full Stack</div>
@@ -1046,7 +1006,6 @@
             <li><i class="fas fa-check-circle" aria-hidden="true"></i> Garantia de 3 meses pós-entrega</li>
           </ul>
         </article>
-
         <article class="plan-card" role="listitem">
           <div class="plan-name">Manutenção &amp; Otimização</div>
           <div class="plan-price">R$ 290 <small>/ mês</small></div>
@@ -1057,7 +1016,6 @@
             <li><i class="fas fa-check-circle" aria-hidden="true"></i> Backup semanal + suporte rápido</li>
           </ul>
         </article>
-
         <article class="plan-card" role="listitem">
           <div class="badge badge-amber"><i class="fas fa-infinity" aria-hidden="true"></i> Vitalício</div>
           <div class="plan-name">Criação + Manutenção Vitalícia</div>
@@ -1070,17 +1028,14 @@
             <li><i class="fas fa-check-circle" aria-hidden="true"></i> Bônus: SSL + domínio grátis 1 ano</li>
           </ul>
         </article>
-
       </div>
     </div>
   </section>
-
-  <!-- TRUST -->
+  <!-- Confiança -->
   <section class="trust-section" aria-labelledby="trust-heading">
     <div class="container">
       <span class="section-label"><i class="fas fa-handshake" aria-hidden="true"></i> Diferenciais</span>
       <h2 id="trust-heading" style="font-size: clamp(1.75rem, 4vw, 2.8rem);">Por que confiar<br>no meu trabalho?</h2>
-
       <div class="trust-grid" role="list">
         <article class="trust-card" role="listitem">
           <div class="trust-number" aria-hidden="true">01</div>
@@ -1100,8 +1055,7 @@
       </div>
     </div>
   </section>
-
-  <!-- CONTACT CTA -->
+  <!-- Contato -->
   <section id="contato" class="contact-section" aria-labelledby="contact-heading">
     <div class="container">
       <div class="contact-inner">
@@ -1129,10 +1083,8 @@
       </div>
     </div>
   </section>
-
 </main>
-
-<!-- FOOTER -->
+<!-- Rodapé -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -1161,9 +1113,8 @@
     </div>
   </div>
 </footer>
-
 <script>
-  /* ─── CAROUSEL ─── */
+  /* ─── Carrossel ─── */
   const projects = [
     { title: "Bistrô & Arte",     domain: "Restaurante", desc: "Cardápio interativo e reservas online",   thumb: "prints/bistro_print.webp",    url: "projetos/bistro.html" },
     { title: "MedVida Clínica",   domain: "Saúde",       desc: "Agendamento e credibilidade médica",      thumb: "prints/medvida_print.webp",   url: "projetos/medvida.html" },
@@ -1259,7 +1210,7 @@
   updateSlidesPerView();
   requestAnimationFrame(() => updatePosition(false));
 
-  /* ─── SMOOTH SCROLL + CLOSE MENU ─── */
+  const menuToggle = document.getElementById('menu-toggle');
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
@@ -1267,13 +1218,18 @@
         e.preventDefault();
         const el = document.querySelector(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
-        const toggle = document.getElementById('menu-toggle');
-        if (toggle?.checked) toggle.checked = false;
+        if (menuToggle && menuToggle.checked) menuToggle.checked = false;
       }
     });
   });
 
-  /* ─── INTERSECTION OBSERVER for fade-up ─── */
+  // Fecha o menu automaticamente ao redimensionar para desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && menuToggle && menuToggle.checked) {
+      menuToggle.checked = false;
+    }
+  });
+
   const fadeEls = document.querySelectorAll('.fade-up');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
