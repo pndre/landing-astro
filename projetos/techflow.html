@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="TechFlow — Blog sobre tecnologia, design e inovação. Conteúdo direto, visual marcante e sem enrolação.">
     <title>TechFlow | Blog de Tecnologia & Design</title>
+    <!-- Font Awesome para o ícone de casa -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* --- Reset --- */
+        /* ========== RESET & ROOTS ========== */
         * {
             margin: 0;
             padding: 0;
@@ -31,12 +33,13 @@
             overflow-x: hidden;
         }
 
-        /* --- Tipografia --- */
+        /* ========== TYPOGRAPHY ========== */
         h1, h2, h3, h4 {
             letter-spacing: -0.02em;
             text-transform: uppercase;
         }
 
+        /* ========== TOP NAV + HAMBURGER ========== */
         .top-nav {
             background: var(--dark);
             color: white;
@@ -107,7 +110,7 @@
             border: 1px solid black;
         }
 
-        /* --- Cabeçalho --- */
+        /* ========== HEADER ========== */
         header {
             background: var(--accent);
             border-bottom: var(--border-width) solid var(--dark);
@@ -161,6 +164,7 @@
             text-shadow: none;
         }
 
+        /* ========== CONTAINER GRID ========== */
         .container {
             display: grid;
             grid-template-columns: 1fr 340px;
@@ -170,7 +174,7 @@
             padding: 50px 30px;
         }
 
-        /* --- Posts --- */
+        /* ========== POSTS ========== */
         .posts-grid {
             display: flex;
             flex-direction: column;
@@ -266,7 +270,7 @@
             transform: scale(0.97);
         }
 
-        /* --- Sidebar --- */
+        /* ========== SIDEBAR ========== */
         aside {
             background: white;
             border: var(--border-width) solid var(--dark);
@@ -358,7 +362,7 @@
             transition: 0.2s;
         }
 
-        /* --- Modal --- */
+        /* ========== MODAL ========== */
         .modal {
             display: none;
             position: fixed;
@@ -426,7 +430,7 @@
             font-family: monospace;
         }
 
-        /* --- Carregar mais --- */
+        /* ========== LOAD MORE ========== */
         #load-more {
             display: block;
             margin: 40px auto 10px;
@@ -446,7 +450,7 @@
             color: black;
         }
 
-        /* --- Rodapé --- */
+        /* ========== FOOTER ========== */
         footer {
             background: var(--dark);
             color: white;
@@ -490,27 +494,97 @@
             opacity: 0.6;
         }
 
-        /* --- Voltar ao topo --- */
-        .back-to-top {
+        /* ========== BOTÕES FLUTUANTES ========== */
+        .back-to-top, .floating-home {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
             background: var(--dark);
             color: var(--accent);
-            width: 55px;
-            height: 55px;
-            font-size: 1.8rem;
+            border: 4px solid var(--accent);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4px solid var(--accent);
-            cursor: pointer;
-            z-index: 99;
-            transition: 0.2s;
-            font-weight: bold;
+            gap: 8px;
+            text-decoration: none;
+            overflow: hidden;
         }
 
-        /* --- Responsividade --- */
+        .back-to-top {
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            font-size: 1.8rem;
+            border-radius: 0;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: scale(1.05);
+        }
+
+        .floating-home {
+            bottom: 30px;
+            left: 30px;
+            width: 55px;
+            height: 55px;
+            font-size: 1.6rem;
+            border-radius: 0;
+            white-space: nowrap;
+        }
+
+        /* Texto "Principal" inicialmente escondido */
+        .floating-home span {
+            opacity: 0;
+            width: 0;
+            transition: opacity 0.2s, width 0.2s;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'Arial Black', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        /* Ao passar o mouse, expande e mostra o texto */
+        .floating-home:hover {
+            width: auto;
+            padding: 0 20px;
+            gap: 12px;
+        }
+
+        .floating-home:hover span {
+            opacity: 1;
+            width: auto;
+        }
+
+        /* Responsividade: mantém visível no celular */
+        @media (max-width: 800px) {
+            .back-to-top, .floating-home {
+                bottom: 20px;
+            }
+            .back-to-top {
+                right: 20px;
+            }
+            .floating-home {
+                left: 20px;
+            }
+            /* Para telas muito pequenas, garante que os botões não se sobreponham */
+            @media (max-width: 480px) {
+                .back-to-top, .floating-home {
+                    bottom: 15px;
+                }
+                .back-to-top {
+                    right: 15px;
+                }
+                .floating-home {
+                    left: 15px;
+                }
+            }
+        }
+
         @media (max-width: 950px) {
             .container {
                 grid-template-columns: 1fr;
@@ -606,15 +680,18 @@
         <a href="#" data-cat="Design Brutal">DESIGN</a>
     </div>
 </nav>
+
 <header>
     <h1>TECHFLOW</h1>
     <p class="tagline">Tecnologia, design e inovação.<br>Sem filtro, direto ao ponto.</p>
 </header>
+
 <div class="container">
     <main>
         <div class="posts-grid" id="posts-container"></div>
         <button id="load-more">CARREGAR MAIS POSTS</button>
     </main>
+
     <aside>
         <h3>BUSCAR</h3>
         <input type="text" id="search-input" class="search-box" placeholder="O que você procura?">
@@ -629,6 +706,7 @@
         </div>
     </aside>
 </div>
+
 <div class="modal" id="post-modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -638,6 +716,7 @@
         <div class="modal-body" id="modal-body"></div>
     </div>
 </div>
+
 <footer>
     <div class="footer-grid">
         <div>
@@ -651,8 +730,16 @@
     </div>
     <div class="copyright">© 2026 TechFlow — todos os direitos reservados.</div>
 </footer>
+
+<!-- Botões flutuantes -->
+<a href="../index.html" class="floating-home" title="Voltar para página principal">
+    <i class="fas fa-home"></i>
+    <span>Principal</span>
+</a>
 <div class="back-to-top" id="backToTop">↑</div>
+
 <script>
+    // ====================== POSTS COM IMAGENS ÚNICAS ======================
     const postsData = [
         { id: 1, category: "Web Dev", title: "Neo-Brutalismo: o retorno do design autêntico", excerpt: "Bordas grossas, sombras offset e uma estética que não tem medo de ser diferente. O minimalismo deu lugar à personalidade.", date: "02 ABR 2026", readTime: "9 min", author: "Grok", image: "https://picsum.photos/id/20/800/500", imageThumb: "https://picsum.photos/id/20/400/240", content: `<p>O design minimalista cansou. O novo movimento pede autenticidade, honestidade visual e interfaces que se destacam.</p><p>Neo-Brutalismo web é a resposta à uniformidade. Bordas pretas, sombras duras e cores vibrantes trazem personalidade de volta.</p><p>Grandes marcas já estão adotando essa estética para se diferenciar.</p>` },
         { id: 2, category: "AI", title: "IA sem humanização: por que isso é bom", excerpt: "Entender a inteligência artificial como ferramenta, não como substituto humano, é o caminho mais produtivo.", date: "01 ABR 2026", readTime: "11 min", author: "Grok", image: "https://picsum.photos/id/26/800/500", imageThumb: "https://picsum.photos/id/26/400/240", content: `<p>IA não precisa de sentimentos para ser útil. Tratá-la como uma ferramenta estatística poderosa é mais eficaz do que tentar humanizá-la.</p><p>Modelos de linguagem são máquinas de probabilidade — e isso é justamente o que os torna tão versáteis.</p>` },
