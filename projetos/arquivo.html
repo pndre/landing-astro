@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ===== CSS ORIGINAL (NENHUMA ALTERAÇÃO) ===== */
     * {
       margin: 0;
       padding: 0;
@@ -350,8 +349,6 @@
       .floating-home span { display: none; }
       .floating-home i { margin: 0; font-size: 1.2rem; }
     }
-
-    /* ===== CSS ADICIONAL (NOVAS FUNÇÕES, MANTÉM ESTILO ORIGINAL) ===== */
     .controls-row {
       display: flex;
       flex-wrap: wrap;
@@ -559,7 +556,6 @@
       ACERVO <b>FOTOGRÁFICO</b> // CULTURA + ARTE
     </div>
   </header>
-  <!-- NOVOS CONTROLES: busca, ordenação, load more, estatísticas -->
   <div class="controls-row">
     <div class="search-sort-group">
       <div class="search-box">
@@ -572,68 +568,65 @@
         <option value="za">Z → A (label)</option>
         <option value="newest">Recentes primeiro</option>
       </select>
-            <button id="resetFiltersBtn" class="action-btn"><i class="fas fa-redo-alt"></i> Reset</button>
+        <button id="resetFiltersBtn" class="action-btn"><i class="fas fa-redo-alt"></i> Reset</button>
+      </div>
+      <div class="stats-badge" id="statsCounter">0 imagens</div>
     </div>
-    <div class="stats-badge" id="statsCounter">0 imagens</div>
-  </div>
-  <div class="filters-section">
-    <div class="filters" id="filterBar">
-      <!-- Filtros gerados dinamicamente -->
-    </div>
-  </div>
-  <main class="gallery-grid" id="galleryGrid"></main>
-  <div style="display: flex; justify-content: center; margin-top: 60px;">
-  <button id="loadMoreBtn" class="action-btn" style="padding: 15px 40px; font-size: 1rem;">
-    <i class="fas fa-plus-circle"></i> Carregar mais
-  </button>
-</div>
-  <div class="info-section">
-    <div class="info-block">
-      <h3>SOBRE O ARQUIVO</h3>
-      <p>Curadoria visual independente que celebra a estética bruta, a experimentação e o olhar contemporâneo. Cada imagem é um fragmento de narrativa visual — da arquitetura à moda, do minimalismo ao caos urbano.</p>
-    </div>
-    <div class="info-block">
-      <h3>CONTATO</h3>
-      <p><i class="fas fa-envelope" style="margin-right: 8px;"></i> hello@arquivovisual.com</p>
-      <p><i class="fas fa-map-pin"></i> São Paulo — NY — Berlin</p>
-      <div class="social-links" style="margin-top: 12px;">
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-behance"></i>
-        <i class="fab fa-x-twitter"></i>
+    <div class="filters-section">
+      <div class="filters" id="filterBar">
+        <!-- Filtros gerados dinamicamente -->
       </div>
     </div>
-    <div class="info-block">
-      <h3>NEWSLETTER</h3>
-      <p>Receba seleções quinzenais. <span style="color: var(--accent); cursor: pointer;" id="mockNewsletter">Inscrever-se →</span></p>
-      <p style="margin-top: 10px;">© 2026 — Curadoria independente</p>
+    <main class="gallery-grid" id="galleryGrid"></main>
+    <div style="display: flex; justify-content: center; margin-top: 60px;">
+    <button id="loadMoreBtn" class="action-btn" style="padding: 15px 40px; font-size: 1rem;">
+      <i class="fas fa-plus-circle"></i> Carregar mais
+    </button>
+  </div>
+    <div class="info-section">
+      <div class="info-block">
+        <h3>SOBRE O ARQUIVO</h3>
+        <p>Curadoria visual independente que celebra a estética social, a experimentação e o olhar contemporâneo. Cada imagem é um fragmento de narrativa visual — da arquitetura à moda, do minimalismo ao caos urbano.</p>
+      </div>
+      <div class="info-block">
+        <h3>CONTATO</h3>
+        <p><i class="fas fa-envelope" style="margin-right: 8px;"></i> hello@arquivovisual.com</p>
+        <p><i class="fas fa-map-pin"></i> São Paulo — NY — Berlin</p>
+        <div class="social-links" style="margin-top: 12px;">
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-behance"></i>
+          <i class="fab fa-x-twitter"></i>
+        </div>
+      </div>
+      <div class="info-block">
+        <h3>NEWSLETTER</h3>
+        <p>Receba seleções quinzenais. <span style="color: var(--accent); cursor: pointer;" id="mockNewsletter">Inscrever-se →</span></p>
+        <p style="margin-top: 10px;">© 2026 — Curadoria independente</p>
+        <p style="margin-top: 10px;">Projetado e codificado por Pedro André. Direitos preservados.</p>
+      </div>
+    </div>
+    <div class="footer-copy">ARQUIVO VISUAL // MURAL BRUTALISTA // ACERVO EM CONSTANTE EXPANSÃO</div>
+  </div>
+  <a href="../index.html" class="floating-home" title="Voltar para página principal">
+    <i class="fas fa-home"></i>
+    <span>Principal</span>
+  </a>
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="modal-lightbox">
+    <div class="modal-close" id="modalClose"><i class="fas fa-times"></i></div>
+    <div class="modal-nav">
+      <button id="modalPrev"><i class="fas fa-chevron-left"></i></button>
+      <button id="modalNext"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="modal-content">
+      <img id="modalImg" src="" alt="Ampliação">
+      <div class="modal-caption" id="modalCaption"></div>
+      <div class="modal-download" id="modalDownload"><i class="fas fa-download"></i> Download</div>
     </div>
   </div>
-  <div class="footer-copy">ARQUIVO VISUAL // MURAL BRUTALISTA // ACERVO EM CONSTANTE EXPANSÃO</div>
-</div>
-
-<a href="../index.html" class="floating-home" title="Voltar para página principal">
-  <i class="fas fa-home"></i>
-  <span>Principal</span>
-</a>
-
-<!-- Lightbox Modal -->
-<div id="lightboxModal" class="modal-lightbox">
-  <div class="modal-close" id="modalClose"><i class="fas fa-times"></i></div>
-  <div class="modal-nav">
-    <button id="modalPrev"><i class="fas fa-chevron-left"></i></button>
-    <button id="modalNext"><i class="fas fa-chevron-right"></i></button>
-  </div>
-  <div class="modal-content">
-    <img id="modalImg" src="" alt="Ampliação">
-    <div class="modal-caption" id="modalCaption"></div>
-    <div class="modal-download" id="modalDownload"><i class="fas fa-download"></i> Download</div>
-  </div>
-</div>
-
-<script>
-  // ==================== ACERVO EXPANDIDO (24 imagens de alta qualidade) ====================
+  <script>
+  //  Acervo
   const masterImageList = [
-    // Originais (12)
     { src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800", tag: "Arquitetura", label: "URBAN SPACE", span: "tall", date: 1 },
     { src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800", tag: "Streetwear", label: "EDITORIAL STREET", span: "", date: 2 },
     { src: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80&w=1200", tag: "Minimalismo", label: "MINIMALISM", span: "wide", date: 3 },
@@ -646,7 +639,6 @@
     { src: "https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&q=80&w=800", tag: "Arquitetura", label: "GEOMETRY", span: "", date: 10 },
     { src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=800", tag: "Editorial", label: "FASHION FILM", span: "", date: 11 },
     { src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800", tag: "Streetwear", label: "GRAFITE", span: "tall", date: 12 },
-    // Novas imagens (expansão)
     { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=800", tag: "Arquitetura", label: "MONTANHA SAGRADA", span: "", date: 13 },
     { src: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800", tag: "Streetwear", label: "STREET CORE", span: "wide", date: 14 },
     { src: "https://www.maxfosterphotography.com/images/xl/Rainbow-Rocks-BW.jpg", tag: "Minimalismo", label: "MONOCROMIA", span: "tall", date: 15 },
@@ -660,10 +652,8 @@
     { src: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&q=80&w=800", tag: "Minimalismo", label: "POESIA VISUAL", span: "", date: 23 },
     { src: "https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&fit=crop&q=80&w=800", tag: "Editorial", label: "ALTA COSTURA", span: "wide", date: 24 }
   ];
-
-  // Estado da aplicação
-  let loadedImages = [];       // imagens atualmente carregadas (expansível)
-  let currentLimit = 12;      // limite inicial
+  let loadedImages = []; 
+  let currentLimit = 12; 
   let currentCategory = "Todos";
   let currentSearchTerm = "";
   let currentSort = "default";
@@ -678,13 +668,13 @@
   const statsSpan = document.getElementById("statsCounter");
   
   // Lightbox globals
-  let currentLightboxImages = [];   // array de objetos (src, label, tag)
+  let currentLightboxImages = [];
   let currentLightboxIndex = 0;
   const modal = document.getElementById("lightboxModal");
   const modalImg = document.getElementById("modalImg");
   const modalCaption = document.getElementById("modalCaption");
   
-  // ========== Funções auxiliares ==========
+  // Funções auxiliares
   function updateLoadedImages() {
     loadedImages = masterImageList.slice(0, currentLimit);
   }
@@ -758,7 +748,6 @@
       galleryGrid.appendChild(div);
     });
     
-    // Reaplicar lógica de toque mobile (preservar original)
     if (galleryGrid) {
       let currentActiveTouchItem = null;
       const clearTouch = () => {
@@ -786,7 +775,7 @@
     renderGallery();
   }
   
-  // ========== Lightbox ==========
+  // Lightbox 
   function openLightbox(imagesArray, startIndex) {
     currentLightboxImages = imagesArray;
     currentLightboxIndex = startIndex;
@@ -834,8 +823,7 @@
     currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
     updateModalContent();
   }
-  
-  // ========== Load More, Reset, Eventos ==========
+
   function loadMore() {
     if (currentLimit >= masterImageList.length) {
       alert("🎞️ Acervo completo carregado! Todas as imagens já estão disponíveis.");
@@ -881,7 +869,7 @@
     if (e.key === "ArrowRight") nextImage();
   });
   
-  // Newsletter e redes (preservando original)
+  // Newsletter e redes
   document.getElementById("mockNewsletter")?.addEventListener("click", () => alert("📸 Arquivo Visual: obrigado pelo interesse! Em breve novidades na sua caixa de entrada (demo)."));
   document.querySelectorAll('.social-links i').forEach(icon => {
     icon.addEventListener('click', () => alert('Conecte-se com o Arquivo Visual nas redes (demo interativa).'));
