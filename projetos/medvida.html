@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>MedVida | Clínica e Saúde Integrada</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-light: #60a5fa;
+      --secondary: #0f172a;
+      --accent: #38bdf8;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --gray-100: #f1f5f9;
+      --gray-300: #cbd5e1;
+      --gray-600: #475569;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+      --shadow-md: 0 8px 28px rgba(0,0,0,0.05);
+      --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--secondary);
+      line-height: 1.5;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Container principal */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* ========== NAVBAR ========== */
+    .med-nav {
+      background: var(--white);
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 1.3rem;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--secondary);
+      transition: var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+    }
+
+    /* ========== HERO ========== */
+    .hero-clinic {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 48px;
+      padding: 60px 0 40px;
+    }
+    .hero-content {
+      flex: 1;
+      min-width: 280px;
+    }
+    .tag-saude {
+      background: rgba(37, 99, 235, 0.12);
+      color: var(--primary);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+    h1 span {
+      color: var(--primary);
+    }
+    .hero-text {
+      color: var(--gray-600);
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .btn-main, .btn-outline {
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+    .btn-main {
+      background: var(--primary);
+      border: none;
+      color: white;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    }
+    .btn-main:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--gray-300);
+      color: var(--secondary);
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background: #f0f9ff;
+    }
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+    }
+    .stat-card {
+      background: var(--white);
+      padding: 18px 20px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .stat-card h4 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    .hero-image {
+      flex: 1;
+      min-width: 260px;
+      background: linear-gradient(145deg, #eef2ff, #ffffff);
+      border-radius: 48px;
+      padding: 20px;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 32px;
+    }
+
+    /* Seções comuns */
+    section {
+      padding: 70px 0;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.75rem;
+      margin-bottom: 12px;
+    }
+    .divider-center {
+      width: 70px;
+      height: 3px;
+      background: var(--primary);
+      margin: 0 auto 48px;
+      border-radius: 4px;
+    }
+
+    /* Especialidades cards */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+    .spec-card {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #eef2ff;
+    }
+    .spec-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+    .spec-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .spec-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    .spec-card p {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+
+    /* Depoimentos */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e2e8f0;
+    }
+    .testimonial-card i.fa-quote-left {
+      color: var(--primary-light);
+      font-size: 1.8rem;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--gray-600);
+      margin-bottom: 20px;
+    }
+    .patient-name {
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    /* Contato / Agenda */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      background: var(--white);
+      border-radius: 36px;
+      padding: 40px 36px;
+      box-shadow: var(--shadow-md);
+      margin-top: 20px;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info h3 {
+      margin-bottom: 20px;
+    }
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .info-row i {
+      width: 32px;
+      color: var(--primary);
+    }
+    .contact-form {
+      flex: 1;
+    }
+    .input-group {
+      margin-bottom: 18px;
+    }
+    .input-group input, .input-group select, .input-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 32px;
+      border: 1px solid var(--gray-300);
+      background: var(--bg-light);
+      font-family: inherit;
+      transition: 0.2s;
+    }
+    .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: #cbd5e1;
+      padding: 50px 5% 30px;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 20px;
+    }
+    .footer-col p, .footer-col a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .social i {
+      font-size: 1.3rem;
+      margin-right: 16px;
+      transition: 0.2s;
+    }
+    .social i:hover {
+      color: var(--primary-light);
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      font-size: 0.7rem;
+      border-top: 1px solid #1e293b;
+      margin-top: 30px;
+    }
+
+    /* Botão flutuante "Voltar para tela principal" (link para ../index.html) */
+    .floating-home {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: rgba(37, 99, 235, 0.9);
+      backdrop-filter: blur(8px);
+      color: white;
+      width: 54px;
+      height: 54px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transition: all 0.25s ease;
+      z-index: 999;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .floating-home i {
+      font-size: 1.6rem;
+    }
+    .floating-home span {
+      display: none;
+    }
+    @media (min-width: 769px) {
+      .floating-home:hover {
+        width: auto;
+        padding: 0 22px;
+        gap: 10px;
+        background: var(--primary-dark);
+      }
+      .floating-home:hover span {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+    }
+
+    /* Responsividade completa */
+    @media (max-width: 768px) {
+      .med-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+      .hero-clinic {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 0;
+      }
+      .actions {
+        justify-content: center;
+      }
+      .stats-row {
+        justify-content: center;
+      }
+      .contact-flex {
+        padding: 28px 20px;
+      }
+      section {
+        padding: 50px 0;
+      }
+      .floating-home {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+      }
+    }
+    @media (max-width: 480px) {
+      .spec-card {
+        padding: 24px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="med-nav">
+    <div class="brand">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      MedVida
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Início</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <div class="container" id="home">
+      <div class="hero-clinic">
+        <div class="hero-content">
+          <span class="tag-saude">✦ Tecnologia em Saúde</span>
+          <h1>Sua saúde em <span>boas mãos.</span></h1>
+          <p class="hero-text">Agende consultas presenciais ou por telemedicina com os melhores especialistas do país. Tecnologia de ponta e cuidado humanizado para você e sua família.</p>
+          <div class="actions">
+            <button class="btn-main" id="btnAgendar">Agendar Agora</button>
+            <button class="btn-outline" id="btnConvenios">Ver Convênios</button>
+          </div>
+          <div class="stats-row">
+            <div class="stat-card">
+              <h4>+45</h4>
+              <p>Especialidades</p>
+            </div>
+            <div class="stat-card">
+              <h4>15min</h4>
+              <p>Tempo de Espera</p>
+            </div>
+            <div class="stat-card">
+              <h4>24h</h4>
+              <p>Suporte Online</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" alt="Equipe médica" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção Especialidades -->
+    <section id="especialidades">
+      <div class="container">
+        <div class="section-sub">Nossas Áreas</div>
+        <div class="section-title">Cuidado multidisciplinar</div>
+        <div class="divider-center"></div>
+        <div class="spec-grid">
+          <div class="spec-card"><i class="fas fa-heartbeat"></i><h3>Cardiologia</h3><p>Prevenção e tratamentos avançados para o coração.</p></div>
+          <div class="spec-card"><i class="fas fa-brain"></i><h3>Neurologia</h3><p>Diagnóstico preciso para saúde neurológica.</p></div>
+          <div class="spec-card"><i class="fas fa-baby-carriage"></i><h3>Pediatria</h3><p>Acompanhamento do nascimento à adolescência.</p></div>
+          <div class="spec-card"><i class="fas fa-female"></i><h3>Ginecologia</h3><p>Saúde integral da mulher em todas as fases.</p></div>
+          <div class="spec-card"><i class="fas fa-lungs"></i><h3>Pneumologia</h3><p>Cuidados respiratórios e alergias.</p></div>
+          <div class="spec-card"><i class="fas fa-stethoscope"></i><h3>Clínica Geral</h3><p>Atendimento humanizado e ágil.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" style="background: #eef2ff30;">
+      <div class="container">
+        <div class="section-sub">Experiência MedVida</div>
+        <div class="section-title">O que nossos pacientes dizem</div>
+        <div class="divider-center"></div>
+        <div class="testimonial-grid">
+          <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Atendimento humanizado e extremamente ágil. Consegui consulta em menos de 24h. Recomendo demais!"</p><span class="patient-name">— Mariana S.</span></div>
+          <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"A plataforma de telemedicina é muito intuitiva. Médicos atenciosos e explicações claras."</p><span class="patient-name">— Carlos E.</span></div>
+          <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Estrutura moderna, equipe multidisciplinar. Me sinto acolhido sempre que vou à clínica."</p><span class="patient-name">— Fernanda L.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato / Reserva de consulta -->
+    <section id="contato">
+      <div class="container">
+        <div class="section-sub">Agende sua consulta</div>
+        <div class="section-title">Fale conosco</div>
+        <div class="divider-center"></div>
+        <div class="contact-flex">
+          <div class="contact-info">
+            <h3>📞 Contato direto</h3>
+            <div class="info-row"><i class="fas fa-map-marker-alt"></i> <span>Av. Paulista, 1000 - São Paulo/SP</span></div>
+            <div class="info-row"><i class="fas fa-phone-alt"></i> <span>(11) 4000-2026</span></div>
+            <div class="info-row"><i class="fas fa-envelope"></i> <span>contato@medvida.com.br</span></div>
+            <div class="info-row"><i class="fas fa-clock"></i> <span>Seg a Sex: 7h às 20h | Sáb: 8h-16h</span></div>
+            <div class="social" style="margin-top: 24px;">
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-facebook"></i>
+              <i class="fab fa-whatsapp"></i>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="formConsulta">
+              <div class="input-group"><input type="text" placeholder="Seu nome completo" required></div>
+              <div class="input-group"><input type="email" placeholder="Melhor e-mail" required></div>
+              <div class="input-group"><input type="tel" placeholder="WhatsApp"></div>
+              <div class="input-group">
+                <select required>
+                  <option value="">Especialidade desejada</option>
+                  <option>Cardiologia</option><option>Neurologia</option><option>Pediatria</option>
+                  <option>Ginecologia</option><option>Clínica Geral</option>
+                </select>
+              </div>
+              <div class="input-group"><textarea rows="2" placeholder="Mensagem / preferência de horário"></textarea></div>
+              <button type="submit" class="btn-submit">Solicitar Agendamento</button>
+            </form>
+            <p style="font-size: 0.7rem; margin-top: 16px;">*Nossa central retorna em até 1h útil.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>MedVida</h4>
+        <p>Saúde com excelência e inovação. Mais de 15 anos transformando vidas.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Links rápidos</h4>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Agendar</a>
+      </div>
+      <div class="footer-col">
+        <h4>Atendimento</h4>
+        <p>Central de emergências 24h: 0800 888 2026</p>
+        <p>Rede credenciada: Bradesco, Unimed, SulAmérica</p>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 MedVida – Clínica Integrada. Todos os direitos reservados. | CNPJ 12.345.678/0001-90
+    </div>
+  </footer>
+
+  <!-- Botão flutuante "Voltar para tela principal" (link para index.html na pasta anterior) -->
+  <a href="../index.html" class="floating-home" title="Voltar para página principal">
+    <i class="fas fa-home"></i>
+    <span>Principal</span>
+  </a>
+
+  <script>
+    // Smooth scroll para links internos
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Botões principais com alertas
+    document.getElementById('btnAgendar')?.addEventListener('click', () => {
+      document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('btnConvenios')?.addEventListener('click', () => {
+      alert("✅ Convênios parceiros: Bradesco Saúde, Unimed, SulAmérica, Amil, Hapvida. Consulte nossa central para mais detalhes.");
+    });
+
+    // Formulário de contato
+    const form = document.getElementById('formConsulta');
+    if(form) {
+      form.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        alert("📋 Solicitação enviada! Em breve nossa equipe entrará em contato para confirmar sua consulta na MedVida.");
+        form.reset();
+      });
+    }
+
+    // Atualiza active no scroll
+    const sections = document.querySelectorAll('section, .hero-clinic');
+    const navItems = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      if(window.scrollY < 200) current = 'home';
+      navItems.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

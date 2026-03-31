@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>MIA MODA | Vestido Midi Aquarela Floral</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --accent: #db2777;
+      --bg: #ffffff;
+      --soft-gray: #f4f4f5;
+      --gold-muted: #c5a386;
+      --text-muted: #71717a;
+      --border-light: #e4e4e7;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--primary);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      border-bottom: 1px solid var(--soft-gray);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-fashion {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    .nav-icons span {
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .nav-icons span:hover {
+      color: var(--primary);
+    }
+
+    /* Product Page Layout */
+    .product-page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 70px);
+      gap: 0;
+    }
+
+    /* Galeria com imagem principal e thumbnail (melhorada) */
+    .gallery {
+      background: #f9f9f9;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .main-image {
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .thumbnail-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .thumb {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+    .thumb.active {
+      border-color: var(--primary);
+    }
+
+    /* Detalhes do produto */
+    .details {
+      padding: 60px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: white;
+    }
+
+    .breadcrumb {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a1a1aa;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 10px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--gold-muted);
+      font-style: italic;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .price-container {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+    .current-price {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .installments {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .size-selector {
+      display: flex;
+      gap: 12px;
+      margin: 15px 0 35px;
+      flex-wrap: wrap;
+    }
+    .size-btn {
+      width: 55px;
+      height: 55px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: white;
+      border-radius: 8px;
+    }
+    .size-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .btn-cart {
+      background: var(--primary);
+      color: white;
+      padding: 18px;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.4s;
+      margin-bottom: 15px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+    }
+    .btn-cart:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+
+    .trust-badges {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      border-top: 1px solid var(--soft-gray);
+      padding-top: 30px;
+    }
+    .badge-item {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-item i {
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    /* Seção de descrição e cuidados */
+    .product-info {
+      background: var(--soft-gray);
+      padding: 50px 5%;
+    }
+    .info-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+    .info-card {
+      flex: 1;
+      min-width: 220px;
+      background: white;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .info-card h3 {
+      font-family: 'Tenor Sans', sans-serif;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    .info-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Produtos relacionados */
+    .related-section {
+      padding: 60px 5%;
+      text-align: center;
+    }
+    .related-title {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .related-item {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .related-item:hover {
+      transform: translateY(-6px);
+    }
+    .related-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .related-info {
+      padding: 18px;
+    }
+    .related-info h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+    .related-price {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #a1a1aa;
+      padding: 50px 5% 30px;
+      margin-top: 40px;
+    }
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+    .footer-col p, .footer-col a {
+      font-size: 0.8rem;
+      color: #a1a1aa;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .social-icons i {
+      font-size: 1.2rem;
+      margin-right: 16px;
+      transition: 0.2s;
+    }
+    .social-icons i:hover {
+      color: white;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      font-size: 0.7rem;
+      border-top: 1px solid #2a2a2a;
+      margin-top: 30px;
+    }
+
+    /* Botão flutuante "Voltar para tela principal" */
+    .floating-home {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      color: white;
+      width: 54px;
+      height: 54px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: all 0.25s ease;
+      z-index: 999;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .floating-home i {
+      font-size: 1.6rem;
+    }
+    .floating-home span {
+      display: none;
+    }
+    @media (min-width: 769px) {
+      .floating-home:hover {
+        width: auto;
+        padding: 0 22px;
+        gap: 10px;
+        background: black;
+      }
+      .floating-home:hover span {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+    }
+
+    /* Responsividade total */
+    @media (max-width: 900px) {
+      .product-page {
+        grid-template-columns: 1fr;
+      }
+      .gallery {
+        padding: 20px;
+        height: auto;
+      }
+      .details {
+        padding: 40px 6%;
+      }
+      .related-item img {
+        height: 240px;
+      }
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .size-btn {
+        width: 48px;
+        height: 48px;
+      }
+      .trust-badges {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-icons"><span>COLEÇÕES</span> <span>LOOKBOOK</span></div>
+    <div class="logo-fashion">MIA MODA</div>
+    <div class="nav-icons"><span>LOGIN</span> <span>SACOLA (0)</span></div>
+  </header>
+
+  <main>
+    <div class="product-page">
+      <!-- Galeria de Imagens -->
+      <div class="gallery">
+        <img id="mainImage" class="main-image" src="https://down-br.img.susercontent.com/file/br-11134207-81ztv-mkuxl52lz2f55e.webp" alt="Vestido Floral Editorial">
+        <div class="thumbnail-row">
+          <img class="thumb active" data-img="https://down-br.img.susercontent.com/file/br-11134207-81ztv-mkuxl52lz2f55e.webp" src="https://down-br.img.susercontent.com/file/br-11134207-81ztv-mkuxl52lz2f55e.webp" alt="thumbnail 1">
+          <img class="thumb" data-img="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&q=80&w=600" src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&q=80&w=600" alt="thumbnail 2">
+          <img class="thumb" data-img="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600" alt="thumbnail 3">
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="breadcrumb">Shop / New Arrival / Dresses</div>
+        <h1>Vestido Midi <br><i style="color: var(--gold-muted)">Aquarela Floral</i></h1>
+        <div class="subtitle">Edição Limitada - Primavera 2026</div>
+        
+        <div class="price-container">
+          <span class="current-price">R$ 589,90</span>
+          <span class="installments">10x R$ 58,99 sem juros</span>
+        </div>
+
+        <p style="font-size: 0.85rem; font-weight: 500;">Tamanho:</p>
+        <div class="size-selector" id="sizeSelector">
+          <div class="size-btn" data-size="36">36</div>
+          <div class="size-btn" data-size="38">38</div>
+          <div class="size-btn active" data-size="40">40</div>
+          <div class="size-btn" data-size="42">42</div>
+          <div class="size-btn" data-size="44">44</div>
+        </div>
+
+        <button class="btn-cart" id="addToCartBtn">Comprar Agora</button>
+
+        <div class="trust-badges">
+          <div class="badge-item"><i class="fas fa-truck"></i> Envio em 24h</div>
+          <div class="badge-item"><i class="fas fa-undo-alt"></i> Primeira Troca Grátis</div>
+          <div class="badge-item"><i class="fas fa-leaf"></i> Algodão Orgânico</div>
+          <div class="badge-item"><i class="fas fa-lock"></i> Pagamento Seguro</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Descrição e cuidados -->
+    <div class="product-info">
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Descrição</h3>
+          <p>Vestido midi confeccionado em tecido de algodão orgânico, com estampa aquarela floral exclusiva. Possui decote V, mangas bufantes leves e cintura ajustável por amarração. Forro interno em viscose. Peça assinatura da coleção "Jardim Secreto".</p>
+        </div>
+        <div class="info-card">
+          <h3>Composição</h3>
+          <p>95% Algodão orgânico, 5% elastano. Fechamento lateral com zíper invisível. Lavagem delicada à mão ou em ciclo suave. Secar à sombra.</p>
+        </div>
+        <div class="info-card">
+          <h3>Medidas (tamanho 40)</h3>
+          <p>Busto: 92cm | Cintura: 74cm | Quadril: 100cm | Comprimento: 115cm. Modelo veste tamanho 38 e tem 1,72m.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produtos Relacionados -->
+    <div class="related-section">
+      <div class="related-title">Você também pode gostar</div>
+      <div class="related-grid">
+        <div class="related-item">
+          <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=600" alt="Blazer Linho">
+          <div class="related-info"><h4>Blazer Alfaiataria</h4><div class="related-price">R$ 789,00</div></div>
+        </div>
+        <div class="related-item">
+          <img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?auto=format&fit=crop&q=80&w=600" alt="Saia Midi">
+          <div class="related-info"><h4>Saia Midi Plissada</h4><div class="related-price">R$ 399,90</div></div>
+        </div>
+        <div class="related-item">
+          <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&q=80&w=600" alt="Bolsa Couro">
+          <div class="related-info"><h4>Bolsa Tote Couro</h4><div class="related-price">R$ 459,00</div></div>
+        </div>
+        <div class="related-item">
+          <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=600" alt="Sandália">
+          <div class="related-info"><h4>Sandália Salto Bloco</h4><div class="related-price">R$ 329,00</div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>MIA MODA</h4>
+        <p>Moda autoral com propósito sustentável. Criamos peças que transcendem estações.</p>
+        <div class="social-icons">
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-pinterest"></i>
+          <i class="fab fa-tiktok"></i>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <a href="#">Trocas e Devoluções</a>
+        <a href="#">Envio e Frete</a>
+        <a href="#">Guia de Tamanhos</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>sac@miamoda.com.br</p>
+        <p>(11) 3000-8000</p>
+        <p>Rua Augusta, 1500 - São Paulo</p>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 MIA MODA – Todos os direitos reservados. Moda ética e consciente.
+    </div>
+  </footer>
+
+  <!-- Botão flutuante "Voltar para tela principal" (link para index.html na pasta anterior) -->
+  <a href="../index.html" class="floating-home" title="Voltar para página principal">
+    <i class="fas fa-home"></i>
+    <span>Principal</span>
+  </a>
+
+  <script>
+    // Thumbnail switcher
+    const mainImage = document.getElementById('mainImage');
+    const thumbs = document.querySelectorAll('.thumb');
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        const newSrc = this.getAttribute('data-img');
+        mainImage.src = newSrc;
+        thumbs.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Size selector (active state)
+    const sizeBtns = document.querySelectorAll('.size-btn');
+    let selectedSize = '40'; // default
+    sizeBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        sizeBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        selectedSize = this.getAttribute('data-size') || this.innerText;
+      });
+    });
+
+    // Add to cart button simulation
+    const cartBtn = document.getElementById('addToCartBtn');
+    cartBtn.addEventListener('click', () => {
+      alert(`✨ Produto adicionado à sacola!\nTamanho: ${selectedSize}\nValor: R$ 589,90\nFormas de pagamento: Pix, cartão até 10x.`);
+    });
+
+    // Simple related items click (simulate navigation)
+    const relatedItems = document.querySelectorAll('.related-item');
+    relatedItems.forEach(item => {
+      item.addEventListener('click', () => {
+        alert("Você será redirecionado para a página do produto (demo).");
+      });
+    });
+  </script>
+</body>
+</html>
