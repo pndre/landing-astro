@@ -559,7 +559,6 @@
       ACERVO <b>FOTOGRÁFICO</b> // CULTURA + ARTE
     </div>
   </header>
-
   <!-- NOVOS CONTROLES: busca, ordenação, load more, estatísticas -->
   <div class="controls-row">
     <div class="search-sort-group">
@@ -573,20 +572,21 @@
         <option value="za">Z → A (label)</option>
         <option value="newest">Recentes primeiro</option>
       </select>
-      <button id="loadMoreBtn" class="action-btn"><i class="fas fa-plus-circle"></i> Carregar mais</button>
-      <button id="resetFiltersBtn" class="action-btn"><i class="fas fa-redo-alt"></i> Reset</button>
+            <button id="resetFiltersBtn" class="action-btn"><i class="fas fa-redo-alt"></i> Reset</button>
     </div>
     <div class="stats-badge" id="statsCounter">0 imagens</div>
   </div>
-
   <div class="filters-section">
     <div class="filters" id="filterBar">
       <!-- Filtros gerados dinamicamente -->
     </div>
   </div>
-
   <main class="gallery-grid" id="galleryGrid"></main>
-
+  <div style="display: flex; justify-content: center; margin-top: 60px;">
+  <button id="loadMoreBtn" class="action-btn" style="padding: 15px 40px; font-size: 1rem;">
+    <i class="fas fa-plus-circle"></i> Carregar mais
+  </button>
+</div>
   <div class="info-section">
     <div class="info-block">
       <h3>SOBRE O ARQUIVO</h3>
