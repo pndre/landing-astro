@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ÆTNA — Clínica de Precisão</title>
+  <title>ÆTNA — Clínica Médica</title>
 
   <!-- Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,6 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------- RESET & BASE ---------- */
     *,
     *::before,
     *::after {
@@ -37,8 +36,6 @@
       background: var(--gold);
       color: var(--base);
     }
-
-    /* ---------- CSS VARIABLES ---------- */
     :root {
       --base: #F9F7F2;
       --base-dark: #F0EDE5;
@@ -57,7 +54,6 @@
       --sp: clamp(5rem, 12vw, 9rem);
     }
 
-    /* ---------- GLOBAL ELEMENTS ---------- */
     body::before {
       content: '';
       position: fixed;
@@ -68,7 +64,7 @@
       pointer-events: none;
     }
 
-    /* ---------- CUSTOM CURSOR ---------- */
+    /* --- Cursor --- */
     #cursor {
       position: fixed;
       z-index: 9999;
@@ -106,7 +102,7 @@
       opacity: 0.3;
     }
 
-    /* ---------- SCROLL PROGRESS ---------- */
+    /* --- Progresso de Scroll --- */
     .scroll-progress {
       position: fixed;
       top: 0;
@@ -124,7 +120,6 @@
       transition: width 0.08s linear;
     }
 
-    /* ---------- NAVIGATION ---------- */
     nav {
       position: fixed;
       top: 0;
@@ -226,7 +221,6 @@
       background: var(--gold);
     }
 
-    /* ---------- HERO SECTION ---------- */
     #hero {
       min-height: 100svh;
       display: grid;
@@ -500,7 +494,6 @@
       animation: fadeIn 1s 1.8s ease forwards;
     }
 
-    /* ---------- UTILITY & REUSABLE ---------- */
     section {
       padding: var(--sp) 0;
     }
@@ -566,7 +559,6 @@
       background: linear-gradient(90deg, transparent, var(--line-gold), transparent);
     }
 
-    /* ---------- ESPECIALIDADES ---------- */
     #especialidades {
       background: var(--base);
     }
@@ -712,7 +704,6 @@
       transform: translateY(0);
     }
 
-    /* ---------- JORNADA (dark bg) ---------- */
     #jornada {
       background: var(--ink);
     }
@@ -828,7 +819,6 @@
       padding: 0.25rem 0.7rem;
     }
 
-    /* ---------- NÚMEROS ---------- */
     #numeros {
       background: var(--base-dark);
       border-top: 0.5px solid var(--line);
@@ -873,7 +863,6 @@
       color: var(--ink-ghost);
     }
 
-    /* ---------- DEPOIMENTOS ---------- */
     #depoimentos {
       background: var(--base);
     }
@@ -973,7 +962,6 @@
       color: var(--ink-ghost);
     }
 
-    /* ---------- CONTATO ---------- */
     #contato {
       background: var(--base-dark);
     }
@@ -1195,7 +1183,7 @@
       line-height: 1.6;
     }
 
-    /* ---------- FOOTER ---------- */
+    /* --- Footer --- */
     footer {
       background: var(--ink);
       padding: clamp(3rem, 7vw, 5rem) 0 2rem;
@@ -1272,7 +1260,7 @@
       color: rgba(249, 247, 242, 0.25);
     }
 
-    /* ---------- COMPONENTS ---------- */
+    /* --- Componentes --- */
     .lux-shadow {
       box-shadow: 0 1px 1px rgba(44, 51, 51, 0.03), 0 2px 2px rgba(44, 51, 51, 0.03), 0 4px 4px rgba(44, 51, 51, 0.03), 0 8px 8px rgba(44, 51, 51, 0.03), 0 16px 16px rgba(44, 51, 51, 0.02), 0 32px 32px rgba(44, 51, 51, 0.02);
     }
@@ -1341,7 +1329,7 @@
       color: var(--ink);
     }
 
-    /* ---------- ANIMATIONS ---------- */
+    /* --- Animações --- */
     @keyframes fadeUp {
       to {
         opacity: 1;
@@ -1355,7 +1343,7 @@
       }
     }
 
-    /* ---------- RESPONSIVE ---------- */
+    /* --- Responsividade --- */
     @media (max-width: 900px) {
       #hero {
         grid-template-columns: 1fr;
@@ -1436,16 +1424,13 @@
   </style>
 </head>
 <body>
-
-  <!-- Custom cursor elements -->
+  <!-- Elementos cursor -->
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
-
-  <!-- Scroll progress bar -->
+  <!-- Barra de progresso do scroll -->
   <div class="scroll-progress">
     <div class="scroll-progress-bar" id="progBar"></div>
   </div>
-
   <!-- Modal (Credenciada) -->
   <div class="modal-overlay" id="modalCred">
     <div class="modal-box">
@@ -1457,7 +1442,6 @@
       </p>
     </div>
   </div>
-
   <!-- Navigation -->
   <nav id="navbar">
     <div class="nav-logo">
@@ -1472,8 +1456,7 @@
     </ul>
     <button class="nav-cta" id="btnNavAgendar">Agendar</button>
   </nav>
-
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="hero">
     <div class="hero-left">
       <div class="hero-eyebrow">
@@ -1514,7 +1497,6 @@
     </div>
   </section>
   <div class="divider"></div>
-
   <!-- Especialidades -->
   <section id="especialidades">
     <div class="container">
@@ -1538,8 +1520,7 @@
     </div>
   </section>
   <div class="divider"></div>
-
-  <!-- Números (stats) -->
+  <!-- Números -->
   <section id="numeros">
     <div class="container" style="padding:0">
       <div class="numbers-grid">
@@ -1551,7 +1532,6 @@
     </div>
   </section>
   <div class="divider"></div>
-
   <!-- Jornada -->
   <section id="jornada">
     <div class="container">
@@ -1576,7 +1556,6 @@
     </div>
   </section>
   <div class="divider" style="background:linear-gradient(90deg,transparent,rgba(182,126,58,.15),transparent)"></div>
-
   <!-- Depoimentos -->
   <section id="depoimentos">
     <div class="container">
@@ -1604,8 +1583,7 @@
     </div>
   </section>
   <div class="divider"></div>
-
-  <!-- Contato / Agendamento -->
+  <!-- Contato -->
   <section id="contato">
     <div class="container">
       <div class="reveal">
@@ -1652,7 +1630,6 @@
       </div>
     </div>
   </section>
-
   <!-- Footer -->
   <footer>
     <div class="footer-grid">
@@ -1666,10 +1643,8 @@
       <p>Todos os direitos reservados · LGPD Compliant</p>
     </div>
   </footer>
-
   <script>
     (function() {
-      // Cursor smooth follow
       const cursor = document.getElementById('cursor');
       const ring = document.getElementById('cursor-ring');
       let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1690,27 +1665,23 @@
       }
       animateRing();
 
-      // Hover effect on clickable elements
       const interactive = document.querySelectorAll('a, button, .spec-card, .test-item, .journey-step, .soc-btn, .num-card');
       interactive.forEach(el => {
         el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
       });
 
-      // Scroll progress bar
       const progressBar = document.getElementById('progBar');
       window.addEventListener('scroll', () => {
         const scrollHeight = document.body.scrollHeight - window.innerHeight;
         progressBar.style.width = (window.scrollY / scrollHeight) * 100 + '%';
       });
 
-      // Navbar background on scroll
       const navbar = document.getElementById('navbar');
       window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 60);
       });
 
-      // Active menu link on scroll
       const sections = document.querySelectorAll('section[id]');
       const navLinks = document.querySelectorAll('.nav-links a');
       window.addEventListener('scroll', () => {
@@ -1725,7 +1696,6 @@
         });
       });
 
-      // Smooth scroll for nav links
       navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
@@ -1735,14 +1705,12 @@
         });
       });
 
-      // Buttons that scroll to contact
       const btnHeroAgendar = document.getElementById('btnHeroAgendar');
       const btnNavAgendar = document.getElementById('btnNavAgendar');
       const scrollToContact = () => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (btnHeroAgendar) btnHeroAgendar.addEventListener('click', scrollToContact);
       if (btnNavAgendar) btnNavAgendar.addEventListener('click', scrollToContact);
 
-      // Modal (credenciada)
       const modal = document.getElementById('modalCred');
       const btnCred = document.getElementById('btnHeroCred');
       const closeModal = document.getElementById('modalClose');
@@ -1750,7 +1718,6 @@
       if (closeModal) closeModal.addEventListener('click', () => modal.classList.remove('open'));
       if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
 
-      // Reveal on scroll (Intersection Observer)
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1758,7 +1725,6 @@
       }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-      // Signature animation trigger
       const sigObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1770,7 +1736,6 @@
       const signatureWrap = document.querySelector('.signature-wrap');
       if (signatureWrap) sigObserver.observe(signatureWrap);
 
-      // Parallax effects
       const heroImg = document.getElementById('heroParallax');
       const journeyImg = document.getElementById('journeyParallax');
       window.addEventListener('scroll', () => {
@@ -1783,7 +1748,6 @@
         }
       });
 
-      // Counter for numbers
       function animateCounter(element, target, duration) {
         let start = 0;
         const step = target / (duration / 16);
@@ -1808,7 +1772,6 @@
       }, { threshold: 0.5 });
       document.querySelectorAll('.num-card').forEach(card => numberObserver.observe(card));
 
-      // Form submission (demo)
       const form = document.getElementById('formAetna');
       const successMsg = document.getElementById('formSuccessMsg');
       if (form) {
