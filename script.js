@@ -4,37 +4,37 @@ const projetos = [{
   domain: "Restaurante",
   desc: "Menu interativo e reservas online",
   thumb: "prints/bistro_print.webp",
-  url: "projetos/bistro/"
+  url: "projetos/bistro/bistro.html"
 }, {
   title: "ÆTNA Clínica Médica",
   domain: "Saúde",
   desc: "Agendamento e credibilidade médica",
   thumb: "prints/aetna_print.webp",
-  url: "projetos/aetna/"
+  url: "projetos/aetna/aetna.html"
 }, {
   title: "TechFlow Blog",
   domain: "Blog",
   desc: "Blog Neo-Brutalista focado em tecnologia",
   thumb: "prints/techflow_print.webp",
-  url: "projetos/techflow/"
+  url: "projetos/techflow/techflow.html"
 }, {
   title: "Mia Modas",
   domain: "E-commerce",
   desc: "Vitrine digital e carrinho otimizado",
   thumb: "prints/miamodas_print.webp",
-  url: "projetos/miamodas/"
+  url: "projetos/miamodas/miamodas.html"
 }, {
   title: "Arquivo Visual",
   domain: "Fotografia",
   desc: "Galeria responsiva de alto impacto",
   thumb: "prints/arquivo_print.webp",
-  url: "projetos/archive/"
+  url: "projetos/arquivo/arquivo.html"
 }, {
   title: "Trip World",
   domain: "Viagens",
   desc: "Pacotes imersivos com uma experiência única",
   thumb: "prints/tripworld_print.webp",
-  url: "projetos/tripworld/"
+  url: "projetos/tripworld/tripworld.html"
 }];
 const track = document.getElementById('carouselTrack');
 let currentIndex = 0;
