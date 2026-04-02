@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+      <meta content="Mia Modas – Galeria de arte e moda. Peças exclusivas com curadoria editorial, avaliações reais e processo artesanal." name="description">
+      <title>Mia Modas | Galeria de Arte e Moda</title>
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com" rel="preconnect">
+      <link href="https://fonts.gstatic.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+      <link href="style.css" rel="stylesheet">
+   </head>
+   <body>
+      <div class="cursor-dot" id="cursorDot"></div>
+      <header class="site-header">
+         <div class="logo">
+            <h1>MIA MODAS</h1>
+            <p>galeria de arte & moda</p>
+         </div>
+         <ul class="nav-links">
+            <li>
+               <a href="#" id="navGallery">Galeria</a>
+            </li>
+            <li>
+               <a href="#" id="navAtelier">Ateliê</a>
+            </li>
+            <li>
+               <a href="#" id="navContato">Contato</a>
+            </li>
+         </ul>
+         <div class="header-icons">
+            <button class="icon-btn" id="wishlistIconBtn"><i class="far fa-heart"></i><span class="count-badge" id="wishlistCount">0</span></button> <button class="icon-btn" id="cartIconBtn"><i class="fas fa-shopping-bag"></i><span class="count-badge" id="cartCount">0</span></button> <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+         </div>
+      </header>
+      <div class="menu-overlay" id="mobileMenu">
+         <button class="menu-close" id="closeMenuBtn">Fechar</button>
+         <ul>
+            <li>
+               <a href="#" id="mobileGallery">Galeria</a>
+            </li>
+            <li>
+               <a href="#" id="mobileAtelier">Ateliê</a>
+            </li>
+            <li>
+               <a href="#" id="mobileContato">Contato</a>
+            </li>
+         </ul>
+         <div class="menu-footer">
+            <a href="#">Instagram</a> <a href="#">Curadoria</a>
+         </div>
+      </div>
+      <main>
+         <div class="view" id="galleryView">
+            <div class="hero-section">
+               <h2>Moda como obra de arte</h2>
+               <div class="hero-divider"></div>
+               <p>Cada peça é uma curadoria exclusiva. Tecido, forma e emoção em perfeita harmonia.</p>
+            </div>
+            <div class="filters-bar">
+               <div class="search-box">
+                  <input id="searchInput" placeholder="Buscar por nome ou estilo..." type="text">
+               </div>
+               <div class="filter-group" id="filterContainer"></div>
+               <select class="sort-select" id="sortSelect">
+                  <option value="default">
+                     Ordenar por
+                  </option>
+                  <option value="price-low">
+                     Preço: menor → maior
+                  </option>
+                  <option value="price-high">
+                     Preço: maior → menor
+                  </option>
+                  <option value="rating">
+                     Melhor avaliado
+                  </option>
+               </select>
+            </div>
+            <div class="gallery-grid" id="galleryGrid"></div>
+            <div class="craft-carousel">
+               <h3 style="font-family: 'Tenor Sans'; letter-spacing: 2px; margin-bottom: 1rem;">O processo artesanal</h3>
+               <div class="carousel-track" id="craftTrack"></div>
+            </div>
+         </div>
+         <div class="view hidden" id="detailView">
+            <div class="product-detail">
+               <button class="back-btn" id="backToGallery"><i class="fas fa-arrow-left"></i> Voltar à galeria</button>
+               <div class="detail-grid">
+                  <div>
+                     <img alt="" class="main-img" id="detailMainImg">
+                     <div class="thumbnails" id="thumbnails"></div>
+                  </div>
+                  <div>
+                     <h2 class="product-title" id="detailTitle"></h2>
+                     <div class="detail-price" id="detailPrice"></div>
+                     <div class="rating" id="detailRating" style="margin:0.5rem 0"></div>
+                     <p id="detailDesc" style="margin:1rem 0; font-size:0.85rem; line-height:1.5;"></p>
+                     <div class="size-selector" id="sizeSelector"></div>
+                     <button class="btn-primary" id="addToCartDetailBtn">Adicionar à curadoria</button> <button class="btn-primary btn-outline" id="buyNowDetailBtn" style="background:transparent; margin-top:0.5rem;">Comprar agora</button>
+                     <div class="product-extras">
+                        <div class="extra-item">
+                           <i class="fas fa-leaf"></i><span>Material orgânico certificado</span>
+                        </div>
+                        <div class="extra-item">
+                           <i class="fas fa-truck"></i><span>Frete grátis acima de R$2.000</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div style="margin-top:4rem;">
+                  <h3>Apreciações reais</h3>
+                  <div id="reviewsList"></div>
+               </div>
+               <div style="margin-top:3rem;">
+                  <h3>Peças que combinam</h3>
+                  <div class="related-grid" id="relatedGrid"></div>
+               </div>
+            </div>
+         </div>
+         <div class="view hidden" id="checkoutView">
+            <div class="product-detail" style="max-width:800px">
+               <button class="back-btn" id="backFromCheckout"><i class="fas fa-arrow-left"></i> Voltar</button>
+               <h2 style="font-family:'Playfair Display';">Finalizar curadoria</h2>
+               <form id="checkoutForm" name="checkoutForm">
+                  <div style="margin:1rem 0">
+                     <label>Nome completo</label><input class="form-input" id="fullName" required="" style="width:100%; border-bottom:1px solid var(--light-gray); padding:8px 0;" type="text">
+                  </div>
+                  <div style="margin:1rem 0">
+                     <label>E-mail</label><input class="form-input" id="email" required="" type="email">
+                  </div>
+                  <div style="margin:1rem 0">
+                     <label>Endereço</label><input class="form-input" id="address" required="" type="text">
+                  </div>
+                  <div style="margin:1rem 0">
+                     <label>Pagamento</label>
+                     <select class="form-input" id="paymentMethod">
+                        <option value="pix">
+                           Pix (10% off)
+                        </option>
+                        <option value="card">
+                           Cartão
+                        </option>
+                     </select>
+                  </div>
+                  <div id="checkoutSummary" style="background:#f0eeea; padding:1rem; margin:1rem 0;"></div>
+                  <button class="btn-primary" type="submit">Confirmar pedido</button>
+               </form>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+         <div class="footer-grid">
+            <div class="footer-col brand-col">
+               <div class="brand-title">MIA MODAS</div>
+               <p class="brand-tagline">Arte vestível, curadoria atemporal e alma solar.</p>
+               <div class="social-mini">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+               </div>
+            </div>
+            <div class="footer-col">
+               <h4>Explorar</h4>
+               <nav class="footer-nav">
+                  <a href="#" id="footerGallery">Galeria</a>
+                  <a href="#" id="footerAtelier">Ateliê</a>
+                  <a href="#">Coleções</a>
+                  <a href="#">Processo Criativo</a>
+               </nav>
+            </div>
+            <div class="footer-col">
+               <h4>Contato</h4>
+               <div class="contact-info">
+                  <a href="mailto:contato@miamodas.com">contato@miamodas.com</a>
+                  <a href="https://wa.me/5571999999999">+55 (71) 99999-9999</a>
+                  <p class="location">Salvador — Bahia, Brasil</p>
+               </div>
+            </div>
+         </div>
+         <div class="footer-bottom">
+            <div class="legal">
+               <p>© 2026 Mia Modas · Todos os direitos reservados</p>
+            </div>
+            <div class="made-by">
+               <p>Projetado e codado por <a href="#" class="pedro-link">Pedro André</a></p>
+            </div>
+         </div>
+      </footer>
+      <a class="floating-home" href="../../index.html" title="Voltar para página principal">
+      <i class="fas fa-home"></i> 
+      <span class="floating-label">Principal</span>
+      </a> 
+      <div class="cart-drawer" id="cartDrawer">
+         <div class="drawer-header">
+            <span>SUA CURADORIA</span><button id="closeCartDrawer" style="background:none; border:none; cursor:pointer;">✕</button>
+         </div>
+         <div class="cart-items-list" id="cartItemsList"></div>
+         <div class="drawer-footer">
+            <div class="cart-total">
+               <span>Total</span><span id="cartTotalAmount">R$ 0</span>
+            </div>
+            <button class="btn-primary" id="proceedCheckoutBtn">Finalizar compra</button>
+         </div>
+      </div>
+      <div class="modal-overlay" id="wishlistModal">
+         <div class="modal-container">
+            <h3>Lista de Desejos</h3>
+            <div id="wishlistItemsGrid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:1rem; margin:1rem 0;"></div>
+            <button id="closeWishlistModal" style="background:none; border:1px solid var(--light-gray); padding:6px 12px; cursor:pointer;">Fechar</button>
+         </div>
+      </div>
+      <div class="toast" id="toastMsg"></div>
+      <script src="script.js"></script>
+   </body>
+</html>

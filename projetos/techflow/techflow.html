@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+      <title>TECHFLOW — Tecnologia Sem Filtros</title>
+      <link href="https://fonts.googleapis.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Barlow+Condensed:wght@400;700;900&family=Sono:wght@400;700;800&display=swap" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+      <link href="style.css" rel="stylesheet">
+   </head>
+   <body>
+      <div id="cursor-dot"></div>
+      <div id="cursor-ring"></div>
+      <div id="page-progress"></div>
+      <div id="toast"></div>
+      <div class="ticker-wrap">
+         <div class="ticker-inner" id="ticker-inner"></div>
+      </div>
+      <nav class="top-nav" id="top-nav">
+         <a class="logo-mark" href="#" onclick="resetAll(); return false;">TECHFLOW<sup>BLOG</sup></a>
+         <div class="nav-links" id="navLinks">
+            <a class="active" href="#" id="nav-inicio" onclick="resetAll(); closeMenu(); return false;">INÍCIO</a> 
+            <a data-cat="Web Dev" href="#" id="nav-webdev">WEB DEV</a> 
+            <a data-cat="AI" href="#" id="nav-ai">IA & ML</a> 
+            <a data-cat="Hardware" href="#" id="nav-hw">HARDWARE</a> 
+            <a data-cat="Cultura Tech" href="#" id="nav-cultura">CULTURA</a> 
+            <a data-cat="Design Brutal" href="#" id="nav-design">DESIGN</a>
+         </div>
+         <div class="nav-right">
+            <button class="btn-theme" id="themeToggle" title="Alternar tema"><i class="fa-solid fa-sun"></i></button> 
+            <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+         </div>
+      </nav>
+      <header class="hero" id="hero">
+         <div class="hero-deco">
+            TF
+         </div>
+         <div class="hero-deco2"></div>
+         <div class="hero-deco3"></div>
+         <div class="hero-grid">
+            <div>
+               <div class="hero-sub">
+                  EST. 2026 — BRASIL
+               </div>
+               <h1 class="hero-title"><em>TECH</em> <span class="stroke-text">FLOW</span></h1>
+               <p class="hero-desc">Tecnologia, design e inovação. Sem filtro, sem enrolação. Conteúdo que importa para quem está construindo o futuro.</p>
+               <div class="hero-stats">
+                  <div class="stat">
+                     <span class="stat-num" id="stat-posts">8</span><span class="stat-label">ARTIGOS</span>
+                  </div>
+                  <div class="stat">
+                     <span class="stat-num">5</span><span class="stat-label">CATEGORIAS</span>
+                  </div>
+                  <div class="stat">
+                     <span class="stat-num" id="stat-reads">2.4K</span><span class="stat-label">LEITORES</span>
+                  </div>
+               </div>
+            </div>
+            <div class="hero-featured" id="hero-featured"></div>
+         </div>
+      </header>
+      <div class="container">
+         <main>
+            <div class="section-label">
+               <h2 id="section-title">POSTS</h2>
+               <div class="line"></div>
+               <span class="count" id="section-count">TODOS</span>
+            </div>
+            <div class="posts-grid" id="posts-container"></div>
+            <div class="load-more-wrap">
+               <button id="load-more"><span>CARREGAR MAIS</span></button>
+               <p class="posts-count" id="posts-count-label"></p>
+            </div>
+         </main>
+         <aside>
+            <div class="sidebar-widget">
+               <div class="widget-header">
+                  BUSCAR <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+               </div>
+               <div class="widget-body">
+                  <div class="search-wrap">
+                     <input class="search-input" id="search-input" placeholder="Buscar artigos..." type="text"> <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                  </div>
+                  <p class="search-results-info" id="search-info"></p>
+               </div>
+            </div>
+            <div class="sidebar-widget">
+               <div class="widget-header">
+                  CATEGORIAS <span class="icon"><i class="fa-solid fa-folder-open"></i></span>
+               </div>
+               <div class="category-grid" id="category-list"></div>
+            </div>
+            <div class="sidebar-widget">
+               <div class="widget-header">
+                  RECENTES <span class="icon"><i class="fa-solid fa-clock"></i></span>
+               </div>
+               <div class="widget-body" id="recent-posts"></div>
+            </div>
+            <div class="sidebar-widget">
+               <div class="widget-header">
+                  TAGS <span class="icon"><i class="fa-solid fa-tag"></i></span>
+               </div>
+               <div class="widget-body">
+                  <div class="tags-cloud" id="tags-cloud"></div>
+               </div>
+            </div>
+            <div class="newsletter-widget">
+               <h3>FIQUE ATUALIZADO</h3>
+               <p>Os melhores artigos de tech direto na sua caixa de entrada. Sem spam.</p>
+               <input class="newsletter-input" id="newsletter-email" placeholder="seu@email.com" type="email"> 
+               <button class="btn-subscribe" onclick="handleSubscribe()">INSCREVER-SE <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+         </aside>
+      </div>
+      <div class="modal-overlay" id="modal-overlay">
+         <div class="modal-box" id="modal-box">
+            <div class="modal-topbar">
+               <div class="modal-topbar-left">
+                  <div class="modal-progress-bar">
+                     <div class="modal-progress-fill" id="modal-progress"></div>
+                  </div>
+                  <span class="reading-label" id="modal-reading-label">LENDO...</span>
+               </div>
+               <button class="close-btn" id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-content" id="modal-content"></div>
+         </div>
+      </div>
+      <div class="fab-left">
+         <a class="fab" href="../../index.html" title="Voltar para a home"><i class="fa-solid fa-house"></i></a>
+      </div>
+      <div class="fab-group">
+         <div class="fab" id="fab-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo">
+            <i class="fa-solid fa-arrow-up"></i>
+         </div>
+      </div>
+      <footer>
+         <div class="footer-top">
+            <div class="footer-brand">
+               <span class="logo-big">TECHFLOW</span>
+               <p>Blog independente sobre tecnologia, design e inovação. Conteúdo relevante, visual marcante, sem enrolação.</p>
+               <div class="footer-newsletter">
+                  <h5>ASSINE O FLUXO</h5>
+                  <form class="news-form" onsubmit="return false;">
+                     <input type="email" placeholder="seu@email.com">
+                     <button type="submit">OK</button>
+                  </form>
+               </div>
+               <div class="social-row">
+                  <a class="social-link" href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a> 
+                  <a class="social-link" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a> 
+                  <a class="social-link" href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a> 
+                  <a class="social-link" href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+               </div>
+            </div>
+            <div class="footer-col">
+               <h4>EXPLORAR</h4>
+               <nav>
+                  <a data-cat-footer="Web Dev" href="#">Web Dev</a> 
+                  <a data-cat-footer="AI" href="#">Inteligência Artificial</a> 
+                  <a data-cat-footer="Hardware" href="#">Hardware</a> 
+                  <a data-cat-footer="Cultura Tech" href="#">Cultura Tech</a> 
+                  <a data-cat-footer="Design Brutal" href="#">Design</a>
+               </nav>
+            </div>
+            <div class="footer-col">
+               <h4>SOBRE</h4>
+               <nav>
+                  <a href="#">Quem somos</a> 
+                  <a href="#">Contato</a> 
+                  <a href="#">Privacidade</a> 
+                  <a href="#">Anuncie</a>
+                  <a href="#">Media Kit</a>
+               </nav>
+            </div>
+            <div class="footer-col">
+               <h4>STACK</h4>
+               <nav>
+                  <a href="#">Neo-Brutalismo</a> 
+                  <a href="#">Vanilla JS</a> 
+                  <a href="#">Space Mono</a> 
+                  <a href="#">Bebas Neue</a>
+                  <a href="#">Github</a>
+               </nav>
+            </div>
+         </div>
+         <div class="footer-bottom">
+            <div class="legal">
+               <p>© 2026 TECHFLOW — TODOS OS DIREITOS RESERVADOS</p>
+            </div>
+            <div class="credits">
+               <p class="author">PROJETADO E CODADO POR <a href="#" class="pedro-link">PEDRO ANDRÉ</a></p>
+            </div>
+         </div>
+      </footer>
+      <script src="script.js"></script>
+   </body>
+</html>
